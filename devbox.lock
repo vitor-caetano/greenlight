@@ -1,0 +1,474 @@
+{
+  "lockfile_version": "1",
+  "packages": {
+    "direnv@2.37.1": {
+      "last_modified": "2026-01-23T17:20:52Z",
+      "resolved": "github:NixOS/nixpkgs/a1bab9e494f5f4939442a57a58d0449a109593fe#direnv",
+      "source": "devbox-search",
+      "version": "2.37.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ynxa247j0dca76aqb5qpk49zmwwrgd57-direnv-2.37.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/ynxa247j0dca76aqb5qpk49zmwwrgd57-direnv-2.37.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/idpp1vkv35s01jwhd1wlnc59zw4fyr7b-direnv-2.37.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/idpp1vkv35s01jwhd1wlnc59zw4fyr7b-direnv-2.37.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qr7mlb0hvnwl266mvx8py0snyy0k6q9v-direnv-2.37.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qr7mlb0hvnwl266mvx8py0snyy0k6q9v-direnv-2.37.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/dvdlhzcb6yq1n29ilbmh154mnlxwx6z5-direnv-2.37.1",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/dvdlhzcb6yq1n29ilbmh154mnlxwx6z5-direnv-2.37.1"
+        }
+      }
+    },
+    "git@2.52.0": {
+      "last_modified": "2026-01-23T17:20:52Z",
+      "resolved": "github:NixOS/nixpkgs/a1bab9e494f5f4939442a57a58d0449a109593fe#git",
+      "source": "devbox-search",
+      "version": "2.52.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/vnhprisb777byfjpp5mdd0mxwkpvhbc0-git-2.52.0",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/p0dx3053175fpr3kjf0fqgs9x6gm3dri-git-2.52.0-doc"
+            }
+          ],
+          "store_path": "/nix/store/vnhprisb777byfjpp5mdd0mxwkpvhbc0-git-2.52.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sd4bjblxfljbm13mpl50x8g336gw2dri-git-2.52.0",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/cx033x4nmr12d9dcn8hxjfrajc3983f0-git-2.52.0-debug"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/ylsmgdrnp78p8hn7n9lxpada78dka41v-git-2.52.0-doc"
+            }
+          ],
+          "store_path": "/nix/store/sd4bjblxfljbm13mpl50x8g336gw2dri-git-2.52.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sr42bfqa0pc2ysba678mrm49g78jdynp-git-2.52.0",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/fky0ci2bhwgyh9klg5682pmqswqg7wk4-git-2.52.0-doc"
+            }
+          ],
+          "store_path": "/nix/store/sr42bfqa0pc2ysba678mrm49g78jdynp-git-2.52.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ipwndaag56mm8g8gn8j98z0jvn8x4mk1-git-2.52.0",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/zd8di23fmzjwrhb5ij1bjnlfqkx9j7d6-git-2.52.0-debug"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/d8kc4kqzcrbcj92msxrpdsdjglh2q5gp-git-2.52.0-doc"
+            }
+          ],
+          "store_path": "/nix/store/ipwndaag56mm8g8gn8j98z0jvn8x4mk1-git-2.52.0"
+        }
+      }
+    },
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "last_modified": "2026-02-04T01:49:30Z",
+      "resolved": "github:NixOS/nixpkgs/aa290c9891fa4ebe88f8889e59633d20cc06a5f2?lastModified=1770169770&narHash=sha256-awR8qIwJxJJiOmcEGgP2KUqYmHG4v%2Fz8XpL9z8FnT1A%3D"
+    },
+    "gnumake@4.4.1": {
+      "last_modified": "2026-01-24T15:20:28Z",
+      "resolved": "github:NixOS/nixpkgs/ab9fbbcf4858bd6d40ba2bbec37ceb4ab6e1f562#gnumake",
+      "source": "devbox-search",
+      "version": "4.4.1",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/cz4rjcd28s9qqk2zcnn9d8pgs5l6qqy9-gnumake-4.4.1",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/2cd4idcvj4fnn4ss1ffz9fqagfhvjpy1-gnumake-4.4.1-man",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/8cnmyqhnlxpl7k9z15cridfdd9kka64b-gnumake-4.4.1-doc"
+            },
+            {
+              "name": "info",
+              "path": "/nix/store/jar06k1k53zsig2iah8vaw1y9r0wxa55-gnumake-4.4.1-info"
+            }
+          ],
+          "store_path": "/nix/store/cz4rjcd28s9qqk2zcnn9d8pgs5l6qqy9-gnumake-4.4.1"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/z9wllcd2plhx8863ka0zfh0mffxm6jir-gnumake-4.4.1",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/i0rnnv9fm87c0228z34pgvk24ifqn6bm-gnumake-4.4.1-man",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/4wnafz38wr2jld58vr5j41b6mc4n26r6-gnumake-4.4.1-debug"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/15r3aanv0lh7mqi1gm3l8blpcnp05qzy-gnumake-4.4.1-doc"
+            },
+            {
+              "name": "info",
+              "path": "/nix/store/gjd78rqz1k94n1c2s2kip126f8gjbb6g-gnumake-4.4.1-info"
+            }
+          ],
+          "store_path": "/nix/store/z9wllcd2plhx8863ka0zfh0mffxm6jir-gnumake-4.4.1"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/sqp22z2pm7s7n0wb3al4c3h47shw5aic-gnumake-4.4.1",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/x7p2q0wx9828p9n8r3pisbijncsfphvr-gnumake-4.4.1-man",
+              "default": true
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/2kpsfrqzyr0kzckkdjbqnsdcz2d719lk-gnumake-4.4.1-doc"
+            },
+            {
+              "name": "info",
+              "path": "/nix/store/jlb9r2mzq8660lhn9my1pgri15jiqljq-gnumake-4.4.1-info"
+            }
+          ],
+          "store_path": "/nix/store/sqp22z2pm7s7n0wb3al4c3h47shw5aic-gnumake-4.4.1"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/5lyy21zm97pj8l67r2xapdkxpxb6v6y0-gnumake-4.4.1",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/an38a5jy0ivp1504yjbzgl4prvhjnix7-gnumake-4.4.1-man",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/fa0f3msdrc5il96nn5qvrbhf6779vvh1-gnumake-4.4.1-debug"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/j2vz6gm38023yfg359cnawzvabqc0w9v-gnumake-4.4.1-doc"
+            },
+            {
+              "name": "info",
+              "path": "/nix/store/2pqq9mdchp0s0cgl1qqql38v502kbdi1-gnumake-4.4.1-info"
+            }
+          ],
+          "store_path": "/nix/store/5lyy21zm97pj8l67r2xapdkxpxb6v6y0-gnumake-4.4.1"
+        }
+      }
+    },
+    "go@latest": {
+      "last_modified": "2026-01-23T17:20:52Z",
+      "resolved": "github:NixOS/nixpkgs/a1bab9e494f5f4939442a57a58d0449a109593fe#go",
+      "source": "devbox-search",
+      "version": "1.25.5",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wh88zz6r1ihcp2mm7ys1f2anp8aga6n2-go-1.25.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/wh88zz6r1ihcp2mm7ys1f2anp8aga6n2-go-1.25.5"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/k3knzdi0v21bf2m7vcxpdy1jnqg1h0zk-go-1.25.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/k3knzdi0v21bf2m7vcxpdy1jnqg1h0zk-go-1.25.5"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/bwdahzajhqd5x14dbvkqww5f1wpsxif3-go-1.25.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/bwdahzajhqd5x14dbvkqww5f1wpsxif3-go-1.25.5"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/zzvsjgylnphvhms3lgr2qlwdxmc68z66-go-1.25.5",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/zzvsjgylnphvhms3lgr2qlwdxmc68z66-go-1.25.5"
+        }
+      }
+    },
+    "postgresql_15@15.15": {
+      "last_modified": "2026-01-30T02:32:49Z",
+      "plugin_version": "0.0.2",
+      "resolved": "github:NixOS/nixpkgs/6308c3b21396534d8aaeac46179c14c439a89b8a#postgresql_15",
+      "source": "devbox-search",
+      "version": "15.15",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/5jvp6jhb6c62dk6vr1wnn0ygnwk92vgs-postgresql-15.15",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/nid5dpdbl5srh1d8a68dx60d4kz18a6n-postgresql-15.15-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/grfgaps12am5q9lmjwlk3m55ghdr3zmp-postgresql-15.15-dev"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/bdaf4jrx6hy9k93hm73sybfjr7zdsml1-postgresql-15.15-lib"
+            },
+            {
+              "name": "plpython3",
+              "path": "/nix/store/0vg7j1vj3gc2iikdjfkwffp2h967jpsi-postgresql-15.15-plpython3"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/vph3cnly7b7zmyawnz84znz3vz3bjjh6-postgresql-15.15-doc"
+            },
+            {
+              "name": "jit",
+              "path": "/nix/store/kf83ddknj6v53j36jnjbdhjav69kc9yz-postgresql-15.15-jit"
+            },
+            {
+              "name": "plperl",
+              "path": "/nix/store/9r76x4prvzl9sn1wf33jvvc4l7gnma06-postgresql-15.15-plperl"
+            },
+            {
+              "name": "pltcl",
+              "path": "/nix/store/hdlwcnwjkll4gbl2ydwfb0wh8jgdjw3j-postgresql-15.15-pltcl"
+            }
+          ],
+          "store_path": "/nix/store/5jvp6jhb6c62dk6vr1wnn0ygnwk92vgs-postgresql-15.15"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/n0iacmjl6anv9qf21bc1656vbwrlvs16-postgresql-15.15",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/l3wdnl71bh2sd0zfcn8qfj7kfn22kqhq-postgresql-15.15-man",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/y3z4bl608i9g56b4wc7gn87hdsxiszvd-postgresql-15.15-debug"
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/rxvmlfhmpmmg81pv7f4m4zsjjsw6z335-postgresql-15.15-dev"
+            },
+            {
+              "name": "plperl",
+              "path": "/nix/store/xv6c1m4nyfjpbq3laxwimghbrj3xb5xl-postgresql-15.15-plperl"
+            },
+            {
+              "name": "plpython3",
+              "path": "/nix/store/hz6dkdrs6h761f9ac4z620r60qx5i8ld-postgresql-15.15-plpython3"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/lhm5i1p6lwic9a9bawa0zci1d3xipzgr-postgresql-15.15-doc"
+            },
+            {
+              "name": "jit",
+              "path": "/nix/store/2c8lyzmpa2pjsvg0si4pgdgpxfk0460r-postgresql-15.15-jit"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/64sdclp4jw6kakgygspl3gkvbv8622d9-postgresql-15.15-lib"
+            },
+            {
+              "name": "pltcl",
+              "path": "/nix/store/h9xicipfwxpbikm0g02vbkg9a7v5z9di-postgresql-15.15-pltcl"
+            }
+          ],
+          "store_path": "/nix/store/n0iacmjl6anv9qf21bc1656vbwrlvs16-postgresql-15.15"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/by2qpqkq76mlv57vpk7vc62j3acm9qqz-postgresql-15.15",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/d9cx7rqr4fx5420sd0c4mba4s06gi7n1-postgresql-15.15-man",
+              "default": true
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/5w86v66fn9r0l1an5l6mjzqxqvf4gd69-postgresql-15.15-dev"
+            },
+            {
+              "name": "jit",
+              "path": "/nix/store/x225n9yv72gmjl9xg9mgfs88y6njdfg6-postgresql-15.15-jit"
+            },
+            {
+              "name": "plperl",
+              "path": "/nix/store/v6g28g0vc9z2dm3hp97an0cw7gp6ksyw-postgresql-15.15-plperl"
+            },
+            {
+              "name": "plpython3",
+              "path": "/nix/store/znpp88a0v200x86y6c3vp4p95h4lfvnj-postgresql-15.15-plpython3"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/fsqkbnjxbhl2zrkjj9h5g035zgdxvh0k-postgresql-15.15-doc"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/c85grk62c7hyl1zq4ak81hvc9may461j-postgresql-15.15-lib"
+            },
+            {
+              "name": "pltcl",
+              "path": "/nix/store/7130wzvc6nqs3cd3ajr9gwr9i9pxh4rj-postgresql-15.15-pltcl"
+            }
+          ],
+          "store_path": "/nix/store/by2qpqkq76mlv57vpk7vc62j3acm9qqz-postgresql-15.15"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/ypdrf4968fl3319rycglgaaw1r61zgsm-postgresql-15.15",
+              "default": true
+            },
+            {
+              "name": "man",
+              "path": "/nix/store/2a6d32bh12m7r03brq8pg4vp674nsdpc-postgresql-15.15-man",
+              "default": true
+            },
+            {
+              "name": "jit",
+              "path": "/nix/store/fh4ngsxahn6gnqx8xmknpq8l1876l0ky-postgresql-15.15-jit"
+            },
+            {
+              "name": "lib",
+              "path": "/nix/store/c70hsxa5xcl5dgx8xp318g90023g4x4c-postgresql-15.15-lib"
+            },
+            {
+              "name": "plpython3",
+              "path": "/nix/store/993m2fy3wwm5nj6n1kl2a76yjgkj4r6j-postgresql-15.15-plpython3"
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/2542b9k87fpna25rh3001hj5ps60m446-postgresql-15.15-debug"
+            },
+            {
+              "name": "dev",
+              "path": "/nix/store/9skq233km4bd1xkc1wh9b12w5j2817n9-postgresql-15.15-dev"
+            },
+            {
+              "name": "plperl",
+              "path": "/nix/store/4kg16jwjsls14fssqkw10gp9dv6qv7ag-postgresql-15.15-plperl"
+            },
+            {
+              "name": "pltcl",
+              "path": "/nix/store/h9kvdymh45zml8la41hz3bjvc7jchdqa-postgresql-15.15-pltcl"
+            },
+            {
+              "name": "doc",
+              "path": "/nix/store/ncv6lgdabmrf9rk9r5gmip93xwraklsx-postgresql-15.15-doc"
+            }
+          ],
+          "store_path": "/nix/store/ypdrf4968fl3319rycglgaaw1r61zgsm-postgresql-15.15"
+        }
+      }
+    }
+  }
+}

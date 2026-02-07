@@ -1,0 +1,313 @@
+devbox services start postgresql
+
+(devbox) ➜  greenlight git:(main) ✗ devbox services start postgresql
+Process-compose is not running. Starting it now...
+
+NOTE: We recommend using `devbox services up` to start process-compose and your services
+Info: Adding package "process-compose@1.64.1" to devbox.json
+Info: Installing the following packages to the nix store: process-compose@1.64.1
+Info: Ensuring packages are installed.
+✓ Computed the Devbox environment.
+Starting services: postgresql 
+Process-compose is now running on port 63136
+To stop your services, run `devbox services stop`
+
+(devbox) ➜  greenlight git:(main) ✗ devbox services ls
+
+Services running in process-compose:
+NAME              STATUS          EXIT CODE
+postgresql        Launched
+
+(devbox) ➜  greenlight git:(main) ✗ psql -h "$PGHOST" -d postgres
+psql (15.15)
+Type "help" for help.
+
+postgres=#SELECT current_user;
+
+(devbox) ➜  greenlight git:(main) ✗ psql -h "$PGHOST" -d postgres
+psql (15.15)
+Type "help" for help.
+
+postgres=# SELECT current_user;
+ current_user 
+--------------
+ vcaetano
+(1 row)
+
+(devbox) ➜  greenlight git:(main) ✗ psql -h "$PGHOST" -d postgres
+psql (15.15)
+Type "help" for help.
+
+postgres=# CREATE DATABASE greenlight;
+CREATE DATABASE
+postgres=# \c greenlight;
+You are now connected to database "greenlight" as user "vcaetano".
+greenlight=#
+
+greenlight=# CREATE ROLE greenlight WITH LOGIN PASSWORD 'pa55word';
+CREATE ROLE
+greenlight=# CREATE EXTENSION IF NOT EXISTS citext;
+CREATE EXTENSION
+
+\q
+
+psql --host=localhost --dbname=greenlight --username=greenlight
+===
+
+(devbox) ➜  greenlight git:(main) ✗ echo $GREENLIGHT_DB_DSN                                        
+postgres://greenlight:pa55word@localhost/greenlight
+(devbox) ➜  greenlight git:(main) ✗ psql $GREENLIGHT_DB_DSN
+psql (15.15)
+Type "help" for help.
+
+greenlight=> \q
+
+===
+(devbox) ➜  greenlight git:(main) ✗ make help     
+Usage:
+  help                        print this help message
+  run/api                     run the cmd/api application
+  db/psql                     connect to the database using psql
+  db/migrations/new name=$1   create a new database migration
+  db/migrations/up            apply all up database migrations
+  tidy                        format all .go files, and tidy and vendor module dependencies
+  audit                       run quality control checks
+  build/api                   build the cmd/api application
+  production/connect          connect to the production server
+  production/deploy/api       deploy the api to production
+
+
+===
+(devbox) ➜  greenlight git:(main) ✗ make tidy
+Tidying module dependencies...
+go mod tidy
+Verifying and vendoring module dependencies...
+go mod verify
+all modules verified
+go mod vendor
+Formatting .go files...
+go fmt ./...
+===
+(devbox) ➜  greenlight git:(main) ✗ make db/psql
+psql postgres://greenlight:pa55word@localhost/greenlight
+psql (15.15)
+Type "help" for help.
+
+greenlight=> \q
+
+===
+(devbox) ➜  greenlight git:(main) ✗ devbox add go
+Info: Adding package "go@latest" to devbox.json
+Info: Installing the following packages to the nix store: go@latest
+✓ Computed the Devbox environment.
+➜  greenlight git:(main) ✗ devbox shell                
+Starting a devbox shell...
+(devbox) ➜  greenlight git:(main) ✗ which go     
+/Users/vcaetano/projects/greenlight/.devbox/nix/profile/default/bin/go
+(devbox) ➜  greenlight git:(main) ✗ go install -tags 'postgres' github.com/golang-migrate/migrate/v4/cmd/migrate@v4.16.2
+
+go: downloading github.com/golang-migrate/migrate/v4 v4.16.2
+go: downloading go.uber.org/atomic v1.7.0
+go: downloading github.com/lib/pq v1.10.2
+
+===
+(devbox) ➜  greenlight git:(main) ✗ make tidy            
+Tidying module dependencies...
+go mod tidy
+Verifying and vendoring module dependencies...
+go mod verify
+all modules verified
+go mod vendor
+Formatting .go files...
+go fmt ./...
+===
+(devbox) ➜  greenlight git:(main) ✗ migrate -version                                                                    
+dev
+===
+(devbox) ➜  greenlight git:(main) ✗ direnv allow
+direnv: loading ~/projects/greenlight/.envrc                                                                                       
+direnv: export +GREENLIGHT_DB_DSN
+(devbox) ➜  greenlight git:(main) ✗ make db/migrations/up
+Are you sure? [y/N] y
+Running up migrations...
+migrate -path ./migrations -database postgres://greenlight:pa55word@localhost/greenlight?sslmode=disable up
+error: pq: permission denied for schema public in line 0: CREATE TABLE IF NOT EXISTS "public"."schema_migrations" (version bigint not null primary key, dirty boolean not null)
+make: *** [Makefile:41: db/migrations/up] Error 1
+
+the fix:
+(devbox) ➜  greenlight git:(main) ✗ psql -h "$PGHOST" -d postgres
+
+psql (15.15)
+Type "help" for help.
+
+postgres=# ALTER DATABASE greenlight OWNER TO greenlight;
+ALTER DATABASE
+postgres=# \c greenlight
+You are now connected to database "greenlight" as user "vcaetano".
+greenlight=# ALTER SCHEMA public OWNER TO greenlight;
+ALTER SCHEMA
+greenlight=# GRANT USAGE, CREATE ON SCHEMA public TO greenlight;
+GRANT
+greenlight=#
+
+===
+(devbox) ➜  greenlight git:(main) ✗ make db/migrations/up        
+Are you sure? [y/N] y
+Running up migrations...
+migrate -path ./migrations -database postgres://greenlight:pa55word@localhost/greenlight?sslmode=disable up
+1/u create_movies_table (6.959ms)
+2/u add_movies_check_constraints (10.6225ms)
+3/u add_movies_indexes (14.98925ms)
+4/u create_users_table (22.915875ms)
+5/u create_tokens_table (28.83625ms)
+6/u add_permissions (34.6985ms)
+
+===
+(devbox) ➜  greenlight git:(main) ✗ make run/api
+go run ./cmd/api -db-dsn=postgres://greenlight:pa55word@localhost/greenlight?sslmode=disable 
+time=2026-02-06T23:22:20.606-03:00 level=INFO msg="database connection pool established"
+time=2026-02-06T23:22:20.606-03:00 level=INFO msg="starting server" addr=:4000 env=development
+
+===
+(devbox) ➜  greenlight git:(main) ✗ psql $GREENLIGHT_DB_DSN      
+psql (15.15)
+Type "help" for help.
+
+greenlight=> \dt
+                List of relations
+ Schema |       Name        | Type  |   Owner    
+--------+-------------------+-------+------------
+ public | movies            | table | greenlight
+ public | permissions       | table | greenlight
+ public | schema_migrations | table | greenlight
+ public | tokens            | table | greenlight
+ public | users             | table | greenlight
+ public | users_permissions | table | greenlight
+(6 rows)
+
+greenlight=>
+===
+(devbox) ➜  greenlight git:(main) ✗ BODY='{"title":"Moana","year":2016,"runtime":"107 mins", "genres":["animation","adventure"]}' 
+(devbox) ➜  greenlight git:(main) ✗ curl -i -d "$BODY" localhost:4000/v1/movies
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Authorization
+Date: Sat, 07 Feb 2026 02:29:25 GMT
+Content-Length: 66
+
+{
+	"error": "you must be authenticated to access this resource"
+}
+
+===
+(devbox) ➜  greenlight git:(main) ✗ BODY='{"name": "Alice Smith", "email": "alice@example.com", "password": "pa55word"}'
+(devbox) ➜  greenlight git:(main) ✗ curl -i -d "$BODY" localhost:4000/v1/users
+HTTP/1.1 202 Accepted
+Content-Type: application/json
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Authorization
+Date: Sat, 07 Feb 2026 02:43:15 GMT
+Content-Length: 152
+
+{
+	"user": {
+		"id": 1,
+		"created_at": "2026-02-06T23:43:15-03:00",
+		"name": "Alice Smith",
+		"email": "alice@example.com",
+		"activated": false
+	}
+}
+
+(devbox) ➜  greenlight git:(main) ✗ BODY='{"name": "Vitor Caetano", "email": "vcaetano@example.com", "password": "pa55word"}'
+(devbox) ➜  greenlight git:(main) ✗ curl -i -d "$BODY" localhost:4000/v1/users                                               
+HTTP/1.1 202 Accepted
+Content-Type: application/json
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Authorization
+Date: Sat, 07 Feb 2026 03:00:27 GMT
+Content-Length: 157
+
+{
+	"user": {
+		"id": 2,
+		"created_at": "2026-02-07T00:00:27-03:00",
+		"name": "Vitor Caetano",
+		"email": "vcaetano@example.com",
+		"activated": false
+	}
+}
+
+=== mailtrap
+https://mailtrap.io/inboxes/4367285/messages
+
+https://mailtrap.io/inboxes/4367285/messages/5327499735
+
+Hi,
+
+Thanks for signing up for a Greenlight account. We're excited to have you on board!
+
+For future reference, your user ID number is 2.
+
+Please send a request to the PUT /v1/users/activated endpoint with the following JSON body to activate your account:
+
+
+    {"token": "UREUPMANSSPU5SPOHYG5TAONDU"}
+    
+Please note that this is a one-time use token and it will expire in 3 days.
+
+Thanks,
+
+The Greenlight Team
+
+===
+(devbox) ➜  greenlight git:(main) ✗ curl -X PUT -d '{"token": "UREUPMANSSPU5SPOHYG5TAONDU"}' localhost:4000/v1/users/activated
+{
+	"user": {
+		"id": 2,
+		"created_at": "2026-02-07T00:00:27-03:00",
+		"name": "Vitor Caetano",
+		"email": "vcaetano@example.com",
+		"activated": true
+	}
+}
+
+(devbox) ➜  greenlight git:(main) ✗ BODY='{"email": "vcaetano@example.com", "password": "pa55word"}'
+(devbox) ➜  greenlight git:(main) ✗ curl -i -d "$BODY" localhost:4000/v1/tokens/authentication
+HTTP/1.1 201 Created
+Content-Type: application/json
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Authorization
+Date: Sat, 07 Feb 2026 15:00:25 GMT
+Content-Length: 122
+
+{
+	"authentication_token": {
+		"token": "TUX7RJEKUOJ3GRII7S34GBDXUY",
+		"expiry": "2026-02-08T12:00:25.374974-03:00"
+	}
+}
+
+curl localhost:4000/v1/healthcheck
+
+curl -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" localhost:4000/v1/healthcheck
+
+(devbox) ➜  greenlight git:(main) ✗ curl -i localhost:4000/v1/movies/1
+HTTP/1.1 401 Unauthorized
+Content-Type: application/json
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Authorization
+Date: Sat, 07 Feb 2026 16:21:30 GMT
+Content-Length: 66
+
+{
+	"error": "you must be authenticated to access this resource"
+}
+
+curl -i -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" localhost:4000/v1/movies/1
