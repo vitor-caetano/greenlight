@@ -311,3 +311,29 @@ Content-Length: 66
 }
 
 curl -i -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" localhost:4000/v1/movies/1
+
+===
+curl -X POST http://localhost:4000/v1/movies \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" \
+  -d '{"title":"The Silent Harbor","year":2019,"runtime":"112 mins","genres":["drama","mystery"]}'
+
+curl -X POST http://localhost:4000/v1/movies \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" \
+  -d '{"title":"Neon Skies","year":2022,"runtime":"98 mins","genres":["sci-fi","thriller"]}'
+
+curl -X POST http://localhost:4000/v1/movies \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" \
+  -d '{"title":"Harvest Moon Road","year":2016,"runtime":"125 mins","genres":["romance","drama"]}'
+
+curl -X POST http://localhost:4000/v1/movies \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" \
+  -d '{"title":"Signal to Nowhere","year":2020,"runtime":"104 mins","genres":["adventure","mystery"]}'
+
+curl -X POST http://localhost:4000/v1/movies \
+  -H "Content-Type: application/json" \
+  -H "Authorization: Bearer TUX7RJEKUOJ3GRII7S34GBDXUY" \
+  -d '{"title":"Last Train to Orion","year":2021,"runtime":"131 mins","genres":["action","sci-fi"]}'

@@ -5,7 +5,9 @@
     "git@2.52.0",
     "direnv@2.37.1",
     "postgresql_15@15.15",
-    "go@latest"
+    "go@latest",
+    "nodejs@25.5.0",
+    "pnpm@10.28.0"
   ],
   "shell": {
     "init_hook": [
