@@ -1,5 +1,5 @@
 ---
-skill: pr
+name: pr
 description: Create a pull request from the current branch with comprehensive analysis
 disable-model-invocation: true
 ---

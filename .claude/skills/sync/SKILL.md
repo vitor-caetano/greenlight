@@ -1,5 +1,5 @@
 ---
-skill: sync
+name: sync
 description: Safely sync current branch with remote tracking branch
 ---
 

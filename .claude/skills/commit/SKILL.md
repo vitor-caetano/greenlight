@@ -1,5 +1,5 @@
 ---
-skill: commit
+name: commit
 description: Create a git commit from current changes with proper analysis and safety checks
 disable-model-invocation: true
 ---
