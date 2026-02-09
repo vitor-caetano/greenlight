@@ -1,3 +1,9 @@
 .envrc
 bin/
 .DS_Store
+
+# Claude Code user-specific settings
+.claude/settings*.json
+
+# MCP configuration with API keys
+.mcp.json
