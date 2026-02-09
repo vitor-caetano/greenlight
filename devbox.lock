@@ -281,6 +281,54 @@
         }
       }
     },
+    "gopls@0.21.0": {
+      "last_modified": "2026-01-23T17:20:52Z",
+      "resolved": "github:NixOS/nixpkgs/a1bab9e494f5f4939442a57a58d0449a109593fe#gopls",
+      "source": "devbox-search",
+      "version": "0.21.0",
+      "systems": {
+        "aarch64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/6v1b50zvb6jw5dji6a48l3di2gf52dqm-gopls-0.21.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/6v1b50zvb6jw5dji6a48l3di2gf52dqm-gopls-0.21.0"
+        },
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/qkzgz3l3yv3m409rjswffmkjx615ivsz-gopls-0.21.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/qkzgz3l3yv3m409rjswffmkjx615ivsz-gopls-0.21.0"
+        },
+        "x86_64-darwin": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/h0m9cqbzvzcnrbz0l87r2jm60fkwy4qq-gopls-0.21.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/h0m9cqbzvzcnrbz0l87r2jm60fkwy4qq-gopls-0.21.0"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/3bfgzysvkjwf4rdpbnn4jb4ly21m1khd-gopls-0.21.0",
+              "default": true
+            }
+          ],
+          "store_path": "/nix/store/3bfgzysvkjwf4rdpbnn4jb4ly21m1khd-gopls-0.21.0"
+        }
+      }
+    },
     "nodejs@25.5.0": {
       "last_modified": "2026-01-27T15:18:14Z",
       "plugin_version": "0.0.2",
