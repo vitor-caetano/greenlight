@@ -24,6 +24,8 @@ def "main setup" [] {
 
     # main apply crossplane --provider none --app-config true --db-config true
 
+    kubectl apply --filename apps/namespace.yaml
+
     main seal secrets
 
     main apply argocd --apply-apps true
