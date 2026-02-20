@@ -4,6 +4,7 @@ source scripts/common.nu
 source scripts/kubernetes.nu
 source scripts/crossplane.nu
 source scripts/argocd.nu
+source scripts/cloudnative-pg.nu
 
 def main [] {}
 
@@ -12,6 +13,8 @@ def "main setup" [] {
     rm --force .env
 
     main create kubernetes kind
+
+    main apply cloudnative-pg
 
     # main apply crossplane --provider none --app-config true --db-config true
 
