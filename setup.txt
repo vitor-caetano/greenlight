@@ -1,5 +1,5 @@
 devbox shell
-./app.nu setup
+./dot.nu setup
 
 source .env
 ===
@@ -10,3 +10,6 @@ Forwarding from [::1]:8080 -> 8080
 http://localhost:8080
 admin
 admin123
+
+source .env
+./dot.nu destroy
