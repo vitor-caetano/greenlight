@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: greenlight-ui
+  namespace: greenlight
+spec:
+  selector:
+    app: greenlight-ui
+  ports:
+    - port: 80
+      targetPort: 80

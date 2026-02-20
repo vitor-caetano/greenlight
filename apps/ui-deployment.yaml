@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greenlight-ui
+  namespace: greenlight
+  labels:
+    app: greenlight-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: greenlight-ui
+  template:
+    metadata:
+      labels:
+        app: greenlight-ui
+    spec:
+      containers:
+        - name: ui
+          image: ghcr.io/vitor-caetano/greenlight-ui:latest
+          ports:
+            - containerPort: 80
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 25m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi

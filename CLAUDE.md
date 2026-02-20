@@ -18,6 +18,23 @@ make run/api
 go run ./cmd/api -db-dsn="<dsn>" -port=4000 -env=development
 ```
 
+### Running the UI (Local Development)
+
+Requires the API already running. In a separate terminal:
+
+    cd ui
+    pnpm install   # first time only
+    pnpm dev       # http://localhost:5173
+
+Vite proxies all `/v1` requests to `http://localhost:4000` (configured in `vite.config.ts`).
+
+**Building the UI image** (for Kubernetes):
+
+    docker build -t ghcr.io/vitor-caetano/greenlight-ui:latest -f ui/Dockerfile ui/
+    docker push ghcr.io/vitor-caetano/greenlight-ui:latest
+
+Note: build context is `ui/` — it is excluded from the root `.dockerignore`.
+
 ### Database Operations
 
 ```bash

@@ -1,0 +1,19 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: greenlight-ui
+  namespace: greenlight
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`ui.127.0.0.1.nip.io`) && PathPrefix(`/v1`)
+      kind: Rule
+      services:
+        - name: greenlight-api
+          port: 4000
+    - match: Host(`ui.127.0.0.1.nip.io`)
+      kind: Rule
+      services:
+        - name: greenlight-ui
+          port: 80
