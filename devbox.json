@@ -8,7 +8,8 @@
     "go@latest",
     "nodejs@25.5.0",
     "pnpm@10.28.0",
-    "gopls@0.21.0"
+    "gopls@0.21.0",
+    "gh@2.86.0"
   ],
   "shell": {
     "init_hook": [
