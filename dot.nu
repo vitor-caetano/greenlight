@@ -5,6 +5,7 @@ source scripts/kubernetes.nu
 source scripts/crossplane.nu
 source scripts/argocd.nu
 source scripts/cloudnative-pg.nu
+source scripts/traefik.nu
 
 def main [] {}
 
@@ -14,13 +15,13 @@ def "main setup" [] {
 
     main create kubernetes kind
 
+    main apply traefik
+
     main apply cloudnative-pg
 
     # main apply crossplane --provider none --app-config true --db-config true
 
     main apply argocd --apply-apps true
-
-    kubectl create namespace a-team
 
     main print source
 
