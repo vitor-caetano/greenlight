@@ -11,7 +11,7 @@
     "gopls@0.21.0",
     "gh@2.86.0",
     "nushell@0.110.0",
-    "kubeseal@latest"
+    "kubeseal@0.34.0"
   ],
   "shell": {
     "init_hook": [

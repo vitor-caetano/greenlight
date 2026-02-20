@@ -6,7 +6,7 @@ source scripts/crossplane.nu
 source scripts/argocd.nu
 source scripts/cloudnative-pg.nu
 source scripts/traefik.nu
-source scripts/sealed-secrets.nu
+source scripts/secrets.nu
 
 def main [] {}
 
@@ -20,13 +20,11 @@ def "main setup" [] {
 
     main apply cloudnative-pg
 
-    main apply sealed-secrets
-
     # main apply crossplane --provider none --app-config true --db-config true
 
     kubectl apply --filename apps/namespace.yaml
 
-    main seal secrets
+    main create secret
 
     main apply argocd --apply-apps true
 
