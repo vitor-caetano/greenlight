@@ -4,3 +4,7 @@ bin/
 
 # Claude Code user-specific settings
 .claude/settings*.json
+
+/.env
+/kind.yaml
+/kubeconfig*.yaml

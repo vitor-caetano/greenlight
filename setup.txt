@@ -1,0 +1,12 @@
+devbox shell
+./app.nu setup
+
+source .env
+===
+(devbox) ➜  greenlight git:(main) ✗ kubectl port-forward service/argocd-server -n argocd 8080:443
+Forwarding from 127.0.0.1:8080 -> 8080
+Forwarding from [::1]:8080 -> 8080
+
+http://localhost:8080
+admin
+admin123
