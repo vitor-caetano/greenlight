@@ -10,5 +10,5 @@ data:
   LIMITER_BURST: "4"
   LIMITER_ENABLED: "true"
   SMTP_HOST: "sandbox.smtp.mailtrap.io"
-  SMTP_PORT: "25"
+  SMTP_PORT: "587"
   SMTP_SENDER: "Greenlight <no-reply@greenlight.alexedwards.net>"
