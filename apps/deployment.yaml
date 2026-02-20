@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: greenlight-api
+  namespace: greenlight
+  labels:
+    app: greenlight-api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: greenlight-api
+  template:
+    metadata:
+      labels:
+        app: greenlight-api
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+      containers:
+        - name: api
+          image: ghcr.io/vitor-caetano/greenlight:latest
+          ports:
+            - containerPort: 4000
+          env:
+            - name: GREENLIGHT_DB_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: greenlight-secret
+                  key: db-dsn
+            - name: SMTP_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: greenlight-secret
+                  key: smtp-username
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: greenlight-secret
+                  key: smtp-password
+          args:
+            - "-port"
+            - "$(PORT)"
+            - "-env"
+            - "$(ENV)"
+            - "-db-dsn"
+            - "$(GREENLIGHT_DB_DSN)"
+            - "-limiter-rps"
+            - "$(LIMITER_RPS)"
+            - "-limiter-burst"
+            - "$(LIMITER_BURST)"
+            - "-limiter-enabled"
+            - "$(LIMITER_ENABLED)"
+            - "-smtp-host"
+            - "$(SMTP_HOST)"
+            - "-smtp-port"
+            - "$(SMTP_PORT)"
+            - "-smtp-username"
+            - "$(SMTP_USERNAME)"
+            - "-smtp-password"
+            - "$(SMTP_PASSWORD)"
+            - "-smtp-sender"
+            - "$(SMTP_SENDER)"
+          envFrom:
+            - configMapRef:
+                name: greenlight-config
+          livenessProbe:
+            httpGet:
+              path: /v1/healthcheck
+              port: 4000
+            initialDelaySeconds: 5
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /v1/healthcheck
+              port: 4000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi

@@ -1,0 +1,15 @@
+.git
+bin/
+.envrc
+.env
+*.md
+.claude/
+.github/
+argocd/
+apps/
+remote/
+ui/
+.devbox/
+kind.yaml
+argocd-values.yaml
+kubeconfig-*

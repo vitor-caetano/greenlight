@@ -78,6 +78,23 @@ build/api:
 	go build -ldflags="-s" -o=./bin/api ./cmd/api
 	GOOS=linux GOARCH=amd64 go build -ldflags="-s" -o=./bin/linux_amd64/api ./cmd/api
 
+
+## docker/build: build the Docker image
+.PHONY: docker/build
+docker/build:
+	docker build -t $(DOCKER_IMAGE) -t $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest .
+
+## docker/push: push the Docker image to GHCR
+.PHONY: docker/push
+docker/push:
+	docker push $(DOCKER_IMAGE)
+	docker push $(DOCKER_REGISTRY)/$(DOCKER_REPO):latest
+
+## docker/login: log in to GitHub Container Registry
+.PHONY: docker/login
+docker/login:
+	@echo $(GITHUB_PAT) | docker login ghcr.io -u $(GITHUB_USER) --password-stdin
+
 # ==================================================================================== #
 # PRODUCTION
 # ==================================================================================== #

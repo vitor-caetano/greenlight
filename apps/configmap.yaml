@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: greenlight-config
+  namespace: greenlight
+data:
+  PORT: "4000"
+  ENV: "production"
+  LIMITER_RPS: "2"
+  LIMITER_BURST: "4"
+  LIMITER_ENABLED: "true"
+  SMTP_HOST: "sandbox.smtp.mailtrap.io"
+  SMTP_PORT: "25"
+  SMTP_SENDER: "Greenlight <no-reply@greenlight.alexedwards.net>"

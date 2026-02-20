@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: greenlight-api
+  namespace: greenlight
+  labels:
+    app: greenlight-api
+spec:
+  type: ClusterIP
+  selector:
+    app: greenlight-api
+  ports:
+    - port: 4000
+      targetPort: 4000
+      protocol: TCP
