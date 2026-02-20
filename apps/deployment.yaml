@@ -18,6 +18,26 @@ spec:
       securityContext:
         runAsNonRoot: true
         runAsUser: 1000
+      initContainers:
+        - name: migrate
+          image: migrate/migrate:v4.18.1
+          args:
+            - "-path=/migrations"
+            - "-database=$(GREENLIGHT_DB_DSN)"
+            - "up"
+          env:
+            - name: GREENLIGHT_DB_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: greenlight-db-app
+                  key: uri
+          volumeMounts:
+            - name: migrations
+              mountPath: /migrations
+      volumes:
+        - name: migrations
+          configMap:
+            name: greenlight-migrations
       containers:
         - name: api
           image: ghcr.io/vitor-caetano/greenlight:latest
@@ -27,8 +47,8 @@ spec:
             - name: GREENLIGHT_DB_DSN
               valueFrom:
                 secretKeyRef:
-                  name: greenlight-secret
-                  key: db-dsn
+                  name: greenlight-db-app
+                  key: uri
             - name: SMTP_USERNAME
               valueFrom:
                 secretKeyRef:
