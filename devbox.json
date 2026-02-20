@@ -10,7 +10,8 @@
     "pnpm@10.28.0",
     "gopls@0.21.0",
     "gh@2.86.0",
-    "nushell@0.110.0"
+    "nushell@0.110.0",
+    "kubeseal@latest"
   ],
   "shell": {
     "init_hook": [
