@@ -37,37 +37,40 @@ export default function LoginPage() {
 
   return (
     <div className="form-page">
-      <h1>Login</h1>
-      {generalError && <div className="error-banner">{generalError}</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          {fieldErrors.email && (
-            <span className="field-error">{fieldErrors.email}</span>
-          )}
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          {fieldErrors.password && (
-            <span className="field-error">{fieldErrors.password}</span>
-          )}
-        </label>
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in…" : "Login"}
-        </button>
-      </form>
+      <h1>Welcome back</h1>
+      <p className="page-subtitle">Sign in to your account</p>
+      <div className="form-card">
+        {generalError && <div className="error-banner">{generalError}</div>}
+        <form onSubmit={handleSubmit}>
+          <label>
+            Email
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            {fieldErrors.email && (
+              <span className="field-error">{fieldErrors.email}</span>
+            )}
+          </label>
+          <label>
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {fieldErrors.password && (
+              <span className="field-error">{fieldErrors.password}</span>
+            )}
+          </label>
+          <button type="submit" disabled={loading}>
+            {loading ? "Signing in…" : "Sign in"}
+          </button>
+        </form>
+      </div>
       <p className="form-footer">
         Don't have an account? <Link to="/register">Register</Link>
       </p>

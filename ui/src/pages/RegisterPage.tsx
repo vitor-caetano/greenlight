@@ -36,61 +36,66 @@ export default function RegisterPage() {
     return (
       <div className="form-page">
         <h1>Check your email</h1>
-        <p>
-          We've sent an activation token to <strong>{email}</strong>. Copy the
-          token and <Link to="/activate">activate your account</Link>.
-        </p>
+        <div className="success-card">
+          <p>
+            We've sent an activation token to <strong>{email}</strong>. Copy
+            the token and <Link to="/activate">activate your account</Link>.
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="form-page">
-      <h1>Register</h1>
-      {generalError && <div className="error-banner">{generalError}</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Name
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-          {fieldErrors.name && (
-            <span className="field-error">{fieldErrors.name}</span>
-          )}
-        </label>
-        <label>
-          Email
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-          {fieldErrors.email && (
-            <span className="field-error">{fieldErrors.email}</span>
-          )}
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-          {fieldErrors.password && (
-            <span className="field-error">{fieldErrors.password}</span>
-          )}
-        </label>
-        <button type="submit" disabled={loading}>
-          {loading ? "Registering…" : "Register"}
-        </button>
-      </form>
+      <h1>Create account</h1>
+      <p className="page-subtitle">Join Greenlight today</p>
+      <div className="form-card">
+        {generalError && <div className="error-banner">{generalError}</div>}
+        <form onSubmit={handleSubmit}>
+          <label>
+            Name
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+            {fieldErrors.name && (
+              <span className="field-error">{fieldErrors.name}</span>
+            )}
+          </label>
+          <label>
+            Email
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+            {fieldErrors.email && (
+              <span className="field-error">{fieldErrors.email}</span>
+            )}
+          </label>
+          <label>
+            Password
+            <input
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+            {fieldErrors.password && (
+              <span className="field-error">{fieldErrors.password}</span>
+            )}
+          </label>
+          <button type="submit" disabled={loading}>
+            {loading ? "Creating account…" : "Create account"}
+          </button>
+        </form>
+      </div>
       <p className="form-footer">
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account? <Link to="/login">Sign in</Link>
       </p>
     </div>
   );

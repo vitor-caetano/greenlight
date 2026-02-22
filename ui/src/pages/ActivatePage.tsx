@@ -34,35 +34,41 @@ export default function ActivatePage() {
     return (
       <div className="form-page">
         <h1>Account activated</h1>
-        <p>
-          Your account is now active. You can <Link to="/login">login</Link>.
-        </p>
+        <div className="success-card">
+          <p>
+            Your account is now active. You can{" "}
+            <Link to="/login">sign in</Link>.
+          </p>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="form-page">
-      <h1>Activate Account</h1>
-      {generalError && <div className="error-banner">{generalError}</div>}
-      <form onSubmit={handleSubmit}>
-        <label>
-          Activation Token
-          <input
-            type="text"
-            value={token}
-            onChange={(e) => setToken(e.target.value)}
-            placeholder="Paste your activation token"
-            required
-          />
-          {fieldErrors.token && (
-            <span className="field-error">{fieldErrors.token}</span>
-          )}
-        </label>
-        <button type="submit" disabled={loading}>
-          {loading ? "Activating…" : "Activate"}
-        </button>
-      </form>
+      <h1>Activate account</h1>
+      <p className="page-subtitle">Enter the token from your email</p>
+      <div className="form-card">
+        {generalError && <div className="error-banner">{generalError}</div>}
+        <form onSubmit={handleSubmit}>
+          <label>
+            Activation Token
+            <input
+              type="text"
+              value={token}
+              onChange={(e) => setToken(e.target.value)}
+              placeholder="Paste your activation token"
+              required
+            />
+            {fieldErrors.token && (
+              <span className="field-error">{fieldErrors.token}</span>
+            )}
+          </label>
+          <button type="submit" disabled={loading}>
+            {loading ? "Activating…" : "Activate account"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

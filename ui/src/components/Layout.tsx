@@ -8,6 +8,7 @@ export default function Layout() {
     <div className="app">
       <nav className="navbar">
         <Link to="/movies" className="nav-brand">
+          <span className="nav-brand-icon">▶</span>
           Greenlight
         </Link>
         <div className="nav-links">

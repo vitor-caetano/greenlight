@@ -46,41 +46,51 @@ export default function MoviesPage() {
 
   return (
     <div>
-      <h1>Movies</h1>
+      <div className="page-header">
+        <h1>Movies</h1>
+      </div>
       {error && <div className="error-banner">{error}</div>}
       {loading ? (
-        <p>Loading…</p>
+        <p className="loading-text">Loading…</p>
       ) : movies.length === 0 ? (
-        <p>No movies found.</p>
+        <p className="empty-text">No movies found.</p>
       ) : (
         <>
-          <table className="movies-table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Year</th>
-                <th>Runtime</th>
-                <th>Genres</th>
-              </tr>
-            </thead>
-            <tbody>
-              {movies.map((m) => (
-                <tr key={m.id}>
-                  <td>{m.title}</td>
-                  <td>{m.year}</td>
-                  <td>{m.runtime} mins</td>
-                  <td>{m.genres.join(", ")}</td>
+          <div className="movies-table-wrap">
+            <table className="movies-table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Year</th>
+                  <th>Runtime</th>
+                  <th>Genres</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {movies.map((m) => (
+                  <tr key={m.id}>
+                    <td>{m.title}</td>
+                    <td>{m.year}</td>
+                    <td>{m.runtime} mins</td>
+                    <td>
+                      {m.genres.map((g) => (
+                        <span key={g} className="genre-badge">
+                          {g}
+                        </span>
+                      ))}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           {metadata && (
             <div className="pagination">
               <button
                 disabled={page <= 1}
                 onClick={() => setPage((p) => p - 1)}
               >
-                Previous
+                ← Previous
               </button>
               <span>
                 Page {metadata.current_page} of {metadata.last_page}
@@ -89,7 +99,7 @@ export default function MoviesPage() {
                 disabled={page >= metadata.last_page}
                 onClick={() => setPage((p) => p + 1)}
               >
-                Next
+                Next →
               </button>
             </div>
           )}
