@@ -1,0 +1,13 @@
+# Agent OS Standards Index
+
+api:
+  background-goroutines:
+    description: Use app.background() for all async goroutines — provides panic recovery and graceful shutdown
+  error-responses:
+    description: Named error response methods on *application — never write error JSON inline
+  input-structs:
+    description: Per-handler anonymous input structs for JSON parsing — never decode directly into model types
+  response-envelope:
+    description: All API responses wrap data in a named envelope key using the envelope type
+  validation:
+    description: Validation logic in internal/data/ via ValidateXxx functions — handlers call and check validator

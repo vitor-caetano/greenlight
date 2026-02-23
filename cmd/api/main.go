@@ -49,6 +49,7 @@ type config struct {
 	cors struct {
 		trustedOrigins []string
 	}
+	noMiddleware bool
 }
 
 type application struct {
@@ -85,6 +86,8 @@ func main() {
 		cfg.cors.trustedOrigins = strings.Fields(val)
 		return nil
 	})
+
+	flag.BoolVar(&cfg.noMiddleware, "no-middleware", false, "Disable middleware stack (for use behind an API Gateway)")
 
 	displayVersion := flag.Bool("version", false, "Display version and exit")
 
