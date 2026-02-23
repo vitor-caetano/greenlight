@@ -81,6 +81,7 @@ spec:
             - "$(SMTP_PASSWORD)"
             - "-smtp-sender"
             - "$(SMTP_SENDER)"
+            - "-no-middleware=true"
           envFrom:
             - configMapRef:
                 name: greenlight-config
