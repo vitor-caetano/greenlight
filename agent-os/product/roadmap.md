@@ -6,4 +6,4 @@ Goal: Deliver Limited Access Developer Portal (as per initial scope).
 
 ## 1. Identity & Access (Core)
 
--   [ ] User registration (Org + Org Lead)
+-   [x] User registration (Org + Org Lead)
