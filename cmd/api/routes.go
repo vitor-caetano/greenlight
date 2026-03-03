@@ -22,6 +22,7 @@ func (app *application) routes() http.Handler {
 		return app.requirePermission(code, h)
 	}
 
+	// Movie routes to be removed in production, but useful for testing and demonstration purposes.
 	router.HandlerFunc(http.MethodGet, "/v1/movies", perm("movies:read", app.listMoviesHandler))
 	router.HandlerFunc(http.MethodPost, "/v1/movies", perm("movies:write", app.createMovieHandler))
 	router.HandlerFunc(http.MethodGet, "/v1/movies/:id", perm("movies:read", app.showMovieHandler))
@@ -37,6 +38,9 @@ func (app *application) routes() http.Handler {
 	router.HandlerFunc(http.MethodPost, "/v1/tokens/password-reset", app.createPasswordResetTokenHandler)
 
 	router.Handler(http.MethodGet, "/debug/vars", expvar.Handler())
+
+	// Developer portal routes
+	router.HandlerFunc(http.MethodPost, "/v1/auth/register", app.registerOrgHandler)
 
 	if app.config.noMiddleware {
 		return app.recoverPanic(router)
