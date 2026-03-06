@@ -99,6 +99,13 @@ export async function activateUser(token: string): Promise<User> {
   return data.user;
 }
 
+export async function resendActivationCode(email: string): Promise<void> {
+  await request("/v1/tokens/activation", {
+    method: "POST",
+    body: JSON.stringify({ email }),
+  });
+}
+
 export async function createAuthToken(input: {
   email: string;
   password: string;

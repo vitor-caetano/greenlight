@@ -3,11 +3,12 @@
 {{define "plainBody"}}
 Hi,
 
-Please send a `PUT /v1/users/activated` request with the following JSON body to activate your account:
+Your verification code is:
 
-{"token": "{{.activationToken}}"}
+    {{.activationCode}}
 
-Please note that this is a one-time use token and it will expire in 3 days.
+Enter this code on the verification page to activate your account.
+This code expires in 10 minutes.
 
 Thanks,
 
@@ -23,11 +24,10 @@ The Greenlight Team
   </head>
   <body>
     <p>Hi,</p>
-    <p>Please send a <code>PUT /v1/users/activated</code> request with the following JSON body to activate your account:</p>
-    <pre><code>
-    {"token": "{{.activationToken}}"}
-    </code></pre> 
-    <p>Please note that this is a one-time use token and it will expire in 3 days.</p>
+    <p>Your verification code is:</p>
+    <p style="font-size: 2rem; font-weight: bold; letter-spacing: 0.5rem; text-align: center; padding: 1rem;">{{.activationCode}}</p>
+    <p>Enter this code on the verification page to activate your account.</p>
+    <p>This code expires in 10 minutes.</p>
     <p>Thanks,</p>
     <p>The Greenlight Team</p>
   </body>

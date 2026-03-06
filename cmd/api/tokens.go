@@ -162,7 +162,7 @@ func (app *application) createActivationTokenHandler(w http.ResponseWriter, r *h
 		return
 	}
 
-	token, err := app.models.Tokens.New(user.ID, 3*24*time.Hour, data.ScopeActivation)
+	token, err := app.models.Tokens.New(user.ID, 10*time.Minute, data.ScopeActivation)
 	if err != nil {
 		app.serverErrorResponse(w, r, err)
 		return
@@ -170,7 +170,7 @@ func (app *application) createActivationTokenHandler(w http.ResponseWriter, r *h
 
 	app.background(func() {
 		data := map[string]any{
-			"activationToken": token.Plaintext,
+			"activationCode": token.Plaintext,
 		}
 
 		err := app.mailer.Send(user.Email, "token_activation.tmpl", data)

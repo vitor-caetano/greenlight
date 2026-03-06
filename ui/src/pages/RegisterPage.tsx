@@ -1,14 +1,14 @@
 import { useState, type FormEvent } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser, ApiClientError } from "../api/client";
 
 export default function RegisterPage() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
   const [generalError, setGeneralError] = useState("");
-  const [success, setSuccess] = useState(false);
   const [loading, setLoading] = useState(false);
 
   async function handleSubmit(e: FormEvent) {
@@ -19,7 +19,7 @@ export default function RegisterPage() {
 
     try {
       await registerUser({ name, email, password });
-      setSuccess(true);
+      navigate("/activate", { state: { email } });
     } catch (err) {
       if (err instanceof ApiClientError) {
         if (err.errors) setFieldErrors(err.errors);
@@ -30,20 +30,6 @@ export default function RegisterPage() {
     } finally {
       setLoading(false);
     }
-  }
-
-  if (success) {
-    return (
-      <div className="form-page">
-        <h1>Check your email</h1>
-        <div className="success-card">
-          <p>
-            We've sent an activation token to <strong>{email}</strong>. Copy
-            the token and <Link to="/activate">activate your account</Link>.
-          </p>
-        </div>
-      </div>
-    );
   }
 
   return (

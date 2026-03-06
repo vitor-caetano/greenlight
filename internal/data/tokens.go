@@ -5,6 +5,8 @@ import (
 	"crypto/rand"
 	"crypto/sha256"
 	"database/sql"
+	"fmt"
+	"math/big"
 	"time"
 
 	"greenlight.alexedwards.net/internal/validator"
@@ -25,8 +27,19 @@ type Token struct {
 }
 
 func generateToken(userID int64, ttl time.Duration, scope string) *Token {
+	var plaintext string
+	if scope == ScopeActivation {
+		n, err := rand.Int(rand.Reader, big.NewInt(1_000_000))
+		if err != nil {
+			panic(err)
+		}
+		plaintext = fmt.Sprintf("%06d", n.Int64())
+	} else {
+		plaintext = rand.Text()
+	}
+
 	token := &Token{
-		Plaintext: rand.Text(),
+		Plaintext: plaintext,
 		UserID:    userID,
 		Expiry:    time.Now().Add(ttl),
 		Scope:     scope,
@@ -41,6 +54,21 @@ func generateToken(userID int64, ttl time.Duration, scope string) *Token {
 func ValidateTokenPlaintext(v *validator.Validator, tokenPlaintext string) {
 	v.Check(tokenPlaintext != "", "token", "must be provided")
 	v.Check(len(tokenPlaintext) == 26, "token", "must be 26 bytes long")
+}
+
+func ValidateActivationCode(v *validator.Validator, code string) {
+	v.Check(code != "", "token", "must be provided")
+	v.Check(len(code) == 6, "token", "must be 6 digits long")
+	if len(code) == 6 {
+		allDigits := true
+		for _, c := range code {
+			if c < '0' || c > '9' {
+				allDigits = false
+				break
+			}
+		}
+		v.Check(allDigits, "token", "must contain only digits")
+	}
 }
 
 type TokenModel struct {

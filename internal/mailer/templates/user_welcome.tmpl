@@ -5,14 +5,12 @@ Hi,
 
 Thanks for signing up for a Greenlight account. We're excited to have you on board!
 
-For future reference, your user ID number is {{.userID}}.
+Your verification code is:
 
-Please send a request to the `PUT /v1/users/activated` endpoint with the following JSON
-body to activate your account:
+    {{.activationCode}}
 
-{"token": "{{.activationToken}}"}
-
-Please note that this is a one-time use token and it will expire in 3 days.
+Enter this code on the verification page to activate your account.
+This code expires in 10 minutes.
 
 Thanks,
 
@@ -31,13 +29,10 @@ The Greenlight Team
 <body>
     <p>Hi,</p>
     <p>Thanks for signing up for a Greenlight account. We're excited to have you on board!</p>
-    <p>For future reference, your user ID number is {{.userID}}.</p>
-     <p>Please send a request to the <code>PUT /v1/users/activated</code> endpoint with the 
-    following JSON body to activate your account:</p>
-    <pre><code>
-    {"token": "{{.activationToken}}"}
-    </code></pre>
-    <p>Please note that this is a one-time use token and it will expire in 3 days.</p>
+    <p>Your verification code is:</p>
+    <p style="font-size: 2rem; font-weight: bold; letter-spacing: 0.5rem; text-align: center; padding: 1rem;">{{.activationCode}}</p>
+    <p>Enter this code on the verification page to activate your account.</p>
+    <p>This code expires in 10 minutes.</p>
     <p>Thanks,</p>
     <p>The Greenlight Team</p>
 </body>
