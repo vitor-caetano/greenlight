@@ -1,8 +1,5 @@
 # Developer Portal for Commercial API Integration — Extracted Domain, Models, APIs
 
-**Source:** Conversation between user and assistant (Abbott Developer Portal project spec + derived backend design artifacts).  
-**Document date generated:** 2026-03-03
-
 ---
 
 ## 1) Input Specification (provided)
@@ -349,15 +346,7 @@ Approval updates pushed from Abbott external system (webhook) or pulled (sync jo
 
 ---
 
-## 5) OpenAPI 3.0 skeleton (earlier version)
-
-> Note: A larger “complete OpenAPI starter” was later produced in the conversation; see section 7.
-
-(For brevity in this MD, the full earlier skeleton is omitted because it is superseded by the complete version below.)
-
----
-
-## 6) Postgres ERD-style schema (DDL)
+## 5) Postgres ERD-style schema (DDL)
 
 ```sql
 -- Enable useful extensions
@@ -642,29 +631,7 @@ CREATE INDEX IF NOT EXISTS idx_content_scope ON content_pages (scope);
 
 ---
 
-## 7) Complete OpenAPI starter (latest)
-
-The conversation produced a full single-file OpenAPI starter (YAML) including:
-- health check
-- auth/register/login/logout/refresh
-- agreements list + accept
-- org + members + invites + remove member
-- access profile + full access request + reactivation request
-- sandbox configs CRUD + submit (async job)
-- production configs list/create + submit (Full only)
-- uploads presign
-- demo submissions list/create
-- tickets list/create (Full only)
-- branding assets
-- content pages list/get
-- jobs get
-- external approvals webhook endpoint (signed)
-
-If you want this MD to include the entire OpenAPI YAML verbatim as the final artifact, tell me and I’ll append it in full (it’s already available in the conversation; I kept this document smaller).
-
----
-
-## 8) Minimal RBAC and access gating matrix
+## 7) Minimal RBAC and access gating matrix
 
 ### Roles
 - `ORG_LEAD`: organization owner/admin (invites, removes users)
@@ -709,7 +676,7 @@ If you want this MD to include the entire OpenAPI YAML verbatim as the final art
 
 ---
 
-## 9) Implementation policy checks (recommended)
+## 8) Implementation policy checks (recommended)
 - Enforce domain blocks on registration + invites.
 - Enforce team size: allow invites only if `members + pending_invites < 5`.
 - Require recorded Sandbox TOU acceptance before sandbox submit.

@@ -40,7 +40,6 @@ func (app *application) routes() http.Handler {
 	router.Handler(http.MethodGet, "/debug/vars", expvar.Handler())
 
 	// Developer portal routes
-	router.HandlerFunc(http.MethodPost, "/v1/auth/register", app.registerOrgHandler)
 
 	if app.config.noMiddleware {
 		return app.recoverPanic(router)
